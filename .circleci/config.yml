@@ -1,10 +1,11 @@
 version: 2.1
+workflows:
+  testing:
+    jobs:
+      - runner
 jobs:
-  build:
-    machine:
-      docker_layer_caching: true  
+  runner:
+    machine: true
+    resource_class: nautical-clouds/nautical-cloud-resource
     steps:
-      - checkout
-      - run:
-          name: "Testing"
-          command: echo "Hi"
+      - run: echo "Hi I'm on Runners!"
