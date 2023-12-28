@@ -6,6 +6,6 @@ workflows:
 jobs:
   runner:
     machine: true
-    resource_class: nautical-clouds/nautical-cloud-resource
+    resource_class: small
     steps:
       - run: echo "Hi I'm on Runners!"
