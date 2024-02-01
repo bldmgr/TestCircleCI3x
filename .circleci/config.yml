@@ -5,22 +5,6 @@ workflows:
       - windows-default-aws
 
 jobs:
-  windows-1645823791-aws:
-    machine:
-      image: windows-server-2022-vs2022-1645823791
-    resource_class: windows.medium
-    steps:
-      - checkout
-      - run:
-          when: always
-          name: "Users circleci .ssh"
-          command: |
-                   Get-ChildItem C:\Users\circleci\.ssh
-          shell: powershell.exe
-      - run: 
-          name: "dir"
-          command: dir
-          shell: cmd.exe 
   windows-default-aws:
     machine:
       image: windows-default
