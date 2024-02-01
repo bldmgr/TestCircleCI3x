@@ -2,9 +2,21 @@ version: 2.1
 workflows:
   testing:
     jobs:
-      - runner
+      - default
+      - cisco-default
+      - ubuntu-2004-2021-07-30
 jobs:
-  runner:
+  ubuntu-2004-2021-07-30:
+    machine:
+      image: ubuntu-2004:2021.07.30
+    steps:
+      - run: echo "Hi I'm on Runners!"
+  cisco-default:
+    machine:
+      image: cisco-default
+    steps:
+      - run: echo "Hi I'm on Runners!"
+  default:
     machine: true
     resource_class: medium
     steps:
