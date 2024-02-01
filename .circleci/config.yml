@@ -2,36 +2,38 @@ version: 2.1
 workflows:
   testing:
     jobs:
-      - default
-      - cisco-default
-      - ubuntu-2004-2021-07-30
-      - ubuntu-2004-2023-02-6
-      - ubuntu-2004-2023-03-28
+      - windows-default-aws
+
 jobs:
-
-  ubuntu-2004-2021-07-30:
+  windows-1645823791-aws:
     machine:
-      image: ubuntu-2004:2021.07.30
+      image: windows-server-2022-vs2022-1645823791
+    resource_class: windows.medium
     steps:
-      - run: echo "Hi I'm on Runners!"
-  ubuntu-2004-2023-02-6:
+      - checkout
+      - run:
+          when: always
+          name: "Users circleci .ssh"
+          command: |
+                   Get-ChildItem C:\Users\circleci\.ssh
+          shell: powershell.exe
+      - run: 
+          name: "dir"
+          command: dir
+          shell: cmd.exe 
+  windows-default-aws:
     machine:
-      image: ubuntu-2004:2023.02.6
+      image: windows-default
+    resource_class: windows.medium
     steps:
-      - run: echo "Hi I'm on Runners!"
-  ubuntu-2004-2023-03-28:
-    machine:
-      image: ubuntu-2004:2023.03.28
-    steps:
-      - run: echo "Hi I'm on Runners!"      
-
-  cisco-default:
-    machine:
-      image: cisco-default
-    steps:
-      - run: echo "Hi I'm on Runners!"
-  default:
-    machine: true
-    resource_class: medium
-    steps:
-      - run: echo "Hi I'm on Runners!"
+      - checkout
+      - run:
+          when: always
+          name: "Users circleci .ssh"
+          command: |
+                   Get-ChildItem C:\Users\circleci\.ssh
+          shell: powershell.exe
+      - run: 
+          name: "dir"
+          command: dir
+          shell: cmd.exe  
