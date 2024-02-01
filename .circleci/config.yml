@@ -2,10 +2,10 @@ version: 2.1
 workflows:
   testing:
     jobs:
-      - runner
+      - docker-job
 jobs:
-  runner:
-    machine: true
-    resource_class: medium
+  docker-job:
+    docker:
+      - image: cimg/base:2021.04
     steps:
       - run: echo "Hi I'm on Runners!"
