@@ -3,44 +3,8 @@ workflows:
   testing:
     jobs:
       - windows-default-aws
-      - windows-1689948058-aws
-      - windows-2023-03-2-aws
 
 jobs:
-  windows-2023-03-2-aws:
-    machine:
-      image: windows-server-2019-vs2019:2023.03.2
-    resource_class: windows.medium
-    steps:
-      - checkout
-      - run:
-          when: always
-          name: "Users circleci .ssh"
-          command: |
-                   Get-ChildItem C:\Users\circleci\.ssh
-          shell: powershell.exe
-      - run: 
-          name: "dir"
-          command: dir
-          shell: cmd.exe  
-  windows-1689948058-aws:
-    machine:
-      image: windows-server-2019-vs2019:1689948058
-    resource_class: windows.medium
-    steps:
-      - checkout
-      - run:
-          when: always
-          name: "Users circleci .ssh"
-          command: |
-                   Get-ChildItem C:\Users\circleci\.ssh
-          shell: powershell.exe
-      - run: 
-          name: "dir"
-          command: dir
-          shell: cmd.exe  
-
-
   windows-default-aws:
     machine:
       image: windows-default
