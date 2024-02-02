@@ -3,9 +3,26 @@ workflows:
   testing:
     jobs:
       - windows-default-aws
+      - windows-server-vijay-2022-1706901686
       - windows-2023-03-2-aws
 
 jobs:
+  windows-server-vijay-2022-1706901686:
+    machine:
+      image: windows-server-vijay-2022-1706901686
+    resource_class: windows.medium
+    steps:
+      - checkout
+      - run:
+          when: always
+          name: "Users circleci .ssh"
+          command: |
+                   Get-ChildItem C:\Users\circleci\.ssh
+          shell: powershell.exe
+      - run: 
+          name: "dir"
+          command: dir
+          shell: cmd.exe  
   windows-2023-03-2-aws:
     machine:
       image: windows-server-2019-vs2019:2023.03.2
