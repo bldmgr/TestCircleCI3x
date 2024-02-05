@@ -10,7 +10,7 @@ jobs:
   windows-server-vijay-2022-1706901686:
     machine:
       image: windows-server-vijay-2022-1706901686
-    resource_class: windows.medium
+    resource_class: windows.2xlarge
     steps:
       - checkout
       - run:
